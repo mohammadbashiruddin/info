@@ -32,10 +32,6 @@ jQuery(document).ready(function(){
 	bashir_tm_down();
 	bashir_tm_totop();
 	
-	bashir_tm_color_switcher();
-	bashir_tm_switcher_opener();
-	bashir_tm_cursor_switcher();
-	
 	jQuery(window).load('body', function(){
 		bashir_tm_my_load();
 	});
@@ -732,96 +728,4 @@ function bashir_tm_totop(){
   });
 }
 
-// -----------------------------------------------------
-	// ---------------------   SWITCHERS    ----------------
-	// -----------------------------------------------------
-
-	function bashir_tm_color_switcher(){
-		
-		"use strict";
-
-		var list	= jQuery('.bashir_tm_settings .colors li a');
-
-		list.on('click',function(){
-			var element = jQuery(this);
-			var elval	= element.attr('class');
-			element.closest('.bashir_tm_all_wrap').attr('data-color',''+elval+'');
-			return false;
-		});	
-	}
-
-
-	function bashir_tm_switcher_opener(){
-		
-		"use strict";
-
-		var settings	= jQuery('.bashir_tm_settings');
-		var button		= settings.find('.link');
-		var direction	= settings.find('.direction li a');
-		var light		= settings.find('.direction li a.light');
-		var dark		= settings.find('.direction li a.dark');
-
-		button.on('click',function(){
-			var element = jQuery(this);
-			if(element.hasClass('opened')){
-				element.removeClass('opened');
-				element.closest('.bashir_tm_settings').removeClass('opened');
-			}else{
-				element.addClass('opened');
-				element.closest('.bashir_tm_settings').addClass('opened');
-			}
-			return false;
-		});
-
-		direction.on('click',function(){
-			var element = jQuery(this);
-			if(!element.hasClass('active')){
-				direction.removeClass('active');
-				element.addClass('active');
-			}
-		});
-
-		dark.on('click',function(){
-			var el = jQuery(this);
-			jQuery('body').addClass('dark');
-			jQuery('.bashir_tm_partners').addClass('opened');
-			el.closest('.bashir_tm_settings').addClass('changed');
-			return false;
-		});
-
-		light.on('click',function(){
-			var ele = jQuery(this);
-			jQuery('body').removeClass('dark');
-			jQuery('.bashir_tm_partners').removeClass('opened');
-			ele.closest('.bashir_tm_settings').removeClass('changed');
-			return false;
-		});
-	}
-
-
-	function bashir_tm_cursor_switcher(){
-		
-		"use strict";
-
-		var wrapper		= jQuery('.bashir_tm_all_wrap');
-		var button		= jQuery('.bashir_tm_settings .cursor li a');
-		var show		= jQuery('.bashir_tm_settings .cursor li a.show');
-		var hide		= jQuery('.bashir_tm_settings .cursor li a.hide');
-
-		button.on('click',function(){
-			var element = jQuery(this);
-			if(!element.hasClass('showme')){
-				button.removeClass('showme');
-				element.addClass('showme');
-			}
-			return false;
-		});
-		show.on('click',function(){
-			wrapper.attr('data-magic-cursor','')
-		});
-		hide.on('click',function(){
-			wrapper.attr('data-magic-cursor','hide')
-		});
-
-	}
 	
